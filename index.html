@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PastCraft Coordinates</title>
+
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="brand">
+      <img class="brand-logo" src="assets/logo_square.png" alt="PastCraft logo">
+      <span class="brand-name">PastCraft</span>
+    </div>
+  </header>
+
+  <main class="page">
+
+    <section class="hero">
+      <h1 class="hero-title">PastCraft Coordinates</h1>
+      <p class="hero-subtitle">Keep every nation's coordinates in one place — copy-paste in, copy-paste out.</p>
+    </section>
+
+    <div class="workspace">
+
+      <!-- Left action rail -->
+      <aside class="action-rail">
+        <div class="rail-sticky">
+          <button type="button" class="btn btn-enter" id="generate-btn">
+            <span class="btn-icon">&#9654;</span> ENTER
+          </button>
+          <button type="button" class="btn btn-secondary" id="add-nation-btn">
+            + Add Nation
+          </button>
+          <button type="button" class="btn btn-ghost" id="reset-btn">
+            Reset all
+          </button>
+
+          <div class="spawn-field">
+            <label for="spawn-input">World spawn <span class="field-hint">(optional)</span></label>
+            <input type="text" id="spawn-input" class="input input-mono" placeholder="e.g. 0 63 0" value="0 63 0">
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main content: nation cards -->
+      <section class="content">
+        <div id="nations-container"></div>
+      </section>
+
+    </div>
+
+    <!-- Output panel -->
+    <section class="output-panel" id="output-panel" hidden>
+      <div class="output-header">
+        <span class="output-filename">GENERATED_OUTPUT.md</span>
+        <button type="button" class="btn btn-copy" id="copy-btn">Copy</button>
+      </div>
+      <pre class="output-block" id="output-block"><code id="output-code"></code></pre>
+    </section>
+
+  </main>
+
+  <!-- Template for a nation card -->
+  <template id="nation-card-template">
+    <div class="nation-card" data-nation-id="">
+      <div class="nation-divider">## <span class="divider-line"></span></div>
+      <div class="nation-header">
+        <span class="hash">#</span>
+        <input type="text" class="input input-nation-name" placeholder="Nation name">
+        <button type="button" class="btn btn-icon-only btn-remove-nation" title="Remove nation">&times;</button>
+      </div>
+      <div class="locations-list"></div>
+      <button type="button" class="btn btn-add-location">+ Add Location</button>
+    </div>
+  </template>
+
+  <!-- Template for a location row -->
+  <template id="location-row-template">
+    <div class="location-row">
+      <span class="hash hash-location">###</span>
+      <input type="text" class="input input-location-name" placeholder="Location name">
+      <input type="text" class="input input-mono input-coords" placeholder="X Y Z  (e.g. 35 71 -138)">
+      <button type="button" class="btn btn-icon-only btn-remove-location" title="Remove location">&times;</button>
+    </div>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
