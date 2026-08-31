@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PastCraft Coordinates</title>
+<<<<<<< HEAD
 
   <link rel="icon" type="image/png" href="assets/favicon.png">
 
@@ -11,10 +12,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+=======
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+>>>>>>> master
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<<<<<<< HEAD
   <header class="site-header">
     <div class="brand">
       <img class="brand-logo" src="assets/logo_square.png" alt="PastCraft logo">
@@ -27,10 +35,80 @@
     <section class="hero">
       <h1 class="hero-title">PastCraft Coordinates</h1>
       <p class="hero-subtitle">Keep every nation's coordinates in one place — copy-paste in, copy-paste out.</p>
+=======
+  <!-- ── Header ─────────────────────────────────────────── -->
+  <header class="site-header">
+    <div class="brand" id="brand-link" role="button" tabindex="0">
+      <img class="brand-logo" src="assets/logo_square.png" alt="PastCraft logo">
+      <span class="brand-name">PastCraft</span>
+    </div>
+    <nav class="header-nav" id="header-nav">
+      <button class="nav-btn active" id="nav-home">Homepage</button>
+      <button class="nav-btn hidden" id="nav-console">Console</button>
+      <div class="nav-sep hidden" id="nav-sep"></div>
+      <button class="nav-btn nav-admin hidden" id="nav-logout">Log out</button>
+      <button class="nav-btn nav-login" id="nav-login">Admin</button>
+    </nav>
+  </header>
+
+  <!-- ── Login modal ────────────────────────────────────── -->
+  <div class="modal-overlay hidden" id="login-modal">
+    <div class="modal">
+      <h2 class="modal-title">Admin Login</h2>
+      <p class="modal-sub">Admin access only</p>
+      <div class="field-group">
+        <label for="login-username">Username</label>
+        <input class="input" type="text" id="login-username" autocomplete="username" placeholder="admin">
+      </div>
+      <div class="field-group">
+        <label for="login-password">Password</label>
+        <input class="input" type="password" id="login-password" autocomplete="current-password" placeholder="••••••••••••">
+      </div>
+      <div class="modal-error hidden" id="login-error"></div>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" id="login-cancel">Cancel</button>
+        <button class="btn btn-enter" id="login-submit">Login</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Confirm dialog ─────────────────────────────────── -->
+  <div class="modal-overlay hidden" id="confirm-modal">
+    <div class="modal modal-sm">
+      <p class="confirm-msg" id="confirm-msg"></p>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" id="confirm-cancel">Cancel</button>
+        <button class="btn btn-danger" id="confirm-ok">Continue</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Homepage view ──────────────────────────────────── -->
+  <main class="page" id="page-home">
+    <section class="hero">
+      <h1 class="hero-title">PastCraft Coordinates</h1>
+      <p class="hero-subtitle">Live coordinate index — generated from the database.</p>
+    </section>
+    <div class="output-panel">
+      <div class="output-header">
+        <span class="output-filename">COORDINATES.md</span>
+        <span class="output-meta" id="home-status">Loading…</span>
+      </div>
+      <pre class="output-block" id="home-output"><code></code></pre>
+    </div>
+  </main>
+
+  <!-- ── Console view ───────────────────────────────────── -->
+  <main class="page hidden" id="page-console">
+    <section class="hero">
+      <h1 class="hero-title">Admin Console</h1>
+      <p class="hero-subtitle">Edit nations and locations. Click <strong>ENTER</strong> to save to database.</p>
+>>>>>>> master
     </section>
 
     <div class="workspace">
 
+<<<<<<< HEAD
       <!-- Left action rail -->
       <aside class="action-rail">
         <div class="rail-sticky">
@@ -52,12 +130,32 @@
       </aside>
 
       <!-- Main content: nation cards -->
+=======
+      <!-- LEFT RAIL -->
+      <aside class="action-rail">
+        <div class="rail-sticky">
+
+          <div class="spawn-field">
+            <label for="spawn-input">World spawn <span class="field-hint">(optional)</span></label>
+            <input type="text" id="spawn-input" class="input input-mono" placeholder="e.g. 0 63 0">
+          </div>
+
+          <button class="btn btn-secondary" id="add-nation-btn">+ Add Nation</button>
+          <button class="btn btn-ghost" id="reset-btn">Reset to DB</button>
+
+          <div class="unsaved-badge hidden" id="unsaved-badge">● Unsaved changes</div>
+        </div>
+      </aside>
+
+      <!-- NATIONS EDITOR -->
+>>>>>>> master
       <section class="content">
         <div id="nations-container"></div>
       </section>
 
     </div>
 
+<<<<<<< HEAD
     <!-- Output panel -->
     <section class="output-panel" id="output-panel" hidden>
       <div class="output-header">
@@ -72,10 +170,31 @@
   <!-- Template for a nation card -->
   <template id="nation-card-template">
     <div class="nation-card" data-nation-id="">
+=======
+    <!-- IMPORT SECTION -->
+    <section class="import-section">
+      <h2 class="section-title">Import Output</h2>
+      <p class="section-sub">Paste a complete PastCraft Markdown output below, then click <strong>IMPORT OUTPUT</strong> to load it into the editor. <em>Nothing is saved until you click ENTER.</em></p>
+      <textarea class="import-textarea" id="import-textarea" placeholder="# Spawn: 0 63 0&#10;## ================================================================&#10;# Nation Name&#10;### Location: X Y Z&#10;…"></textarea>
+      <div class="import-error hidden" id="import-error"></div>
+      <button class="btn btn-import" id="import-btn">⬆ IMPORT OUTPUT</button>
+    </section>
+
+    <!-- ENTER button -->
+    <div class="enter-bar">
+      <button class="btn btn-enter-lg" id="enter-btn">ENTER — Save to Database</button>
+    </div>
+  </main>
+
+  <!-- Templates -->
+  <template id="nation-card-template">
+    <div class="nation-card">
+>>>>>>> master
       <div class="nation-divider">## <span class="divider-line"></span></div>
       <div class="nation-header">
         <span class="hash">#</span>
         <input type="text" class="input input-nation-name" placeholder="Nation name">
+<<<<<<< HEAD
         <button type="button" class="btn btn-icon-only btn-remove-nation" title="Remove nation">&times;</button>
       </div>
       <div class="locations-list"></div>
@@ -84,12 +203,25 @@
   </template>
 
   <!-- Template for a location row -->
+=======
+        <button class="btn btn-icon-only btn-remove-nation" title="Remove nation" aria-label="Remove nation">&times;</button>
+      </div>
+      <div class="locations-list"></div>
+      <button class="btn btn-add-location">+ Add Location</button>
+    </div>
+  </template>
+
+>>>>>>> master
   <template id="location-row-template">
     <div class="location-row">
       <span class="hash hash-location">###</span>
       <input type="text" class="input input-location-name" placeholder="Location name">
       <input type="text" class="input input-mono input-coords" placeholder="X Y Z  (e.g. 35 71 -138)">
+<<<<<<< HEAD
       <button type="button" class="btn btn-icon-only btn-remove-location" title="Remove location">&times;</button>
+=======
+      <button class="btn btn-icon-only btn-remove-location" title="Remove location" aria-label="Remove location">&times;</button>
+>>>>>>> master
     </div>
   </template>
 
