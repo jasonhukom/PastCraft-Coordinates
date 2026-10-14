@@ -1,0 +1,22 @@
+services:
+  web:
+    build: .
+    container_name: pastcraft_web
+    ports:
+      - "2402:2402"
+    volumes:
+      # Mount local database folder to persist changes between container restarts
+      - ./database:/app/database
+    restart: unless-stopped
+
+  # SQLite Web GUI: provides a browser-based database management interface
+  # (Similar to phpMyAdmin, but designed specifically for SQLite)
+  sqlite-web:
+    image: coleifer/sqlite-web:latest
+    container_name: pastcraft_db_gui
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./database:/data
+    command: sqlite_web -H 0.0.0.0 -p 8080 /data/pastcraft.db
+    restart: unless-stopped
