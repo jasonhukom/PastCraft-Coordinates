@@ -132,17 +132,57 @@ async function checkAuthStatus() {
   updateNav();
 }
 
+function togglePasswordVisibility() {
+  const pwInput = $("#login-password");
+  const eyeShow = $("#eye-show");
+  const eyeHide = $("#eye-hide");
+  const btn     = $("#toggle-password");
+  if (!pwInput) return;
+
+  const isPassword = pwInput.type === "password";
+  pwInput.type = isPassword ? "text" : "password";
+
+  if (eyeShow && eyeHide) {
+    eyeShow.classList.toggle("hidden", isPassword);
+    eyeHide.classList.toggle("hidden", !isPassword);
+  }
+  if (btn) {
+    const label = isPassword ? "Hide password" : "Show password";
+    btn.setAttribute("title", label);
+    btn.setAttribute("aria-label", label);
+  }
+  pwInput.focus();
+}
+
+function resetPasswordVisibility() {
+  const pwInput = $("#login-password");
+  const eyeShow = $("#eye-show");
+  const eyeHide = $("#eye-hide");
+  const btn     = $("#toggle-password");
+  if (!pwInput) return;
+
+  pwInput.type = "password";
+  if (eyeShow) eyeShow.classList.remove("hidden");
+  if (eyeHide) eyeHide.classList.add("hidden");
+  if (btn) {
+    btn.setAttribute("title", "Show password");
+    btn.setAttribute("aria-label", "Show password");
+  }
+}
+
 function showLoginModal() {
   const modal = $("#login-modal");
   modal.classList.remove("hidden");
   $("#login-error").classList.add("hidden");
   $("#login-username").value = "";
   $("#login-password").value = "";
+  resetPasswordVisibility();
   setTimeout(() => $("#login-username").focus(), 50);
 }
 
 function hideLoginModal() {
   $("#login-modal").classList.add("hidden");
+  resetPasswordVisibility();
 }
 
 async function doLogin() {
@@ -530,6 +570,7 @@ $("#login-modal").addEventListener("click", e => {
 $("#login-password").addEventListener("keydown", e => {
   if (e.key === "Enter") doLogin();
 });
+$("#toggle-password").addEventListener("click", togglePasswordVisibility);
 
 // Console actions
 $("#add-nation-btn").addEventListener("click", () => {
