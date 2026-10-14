@@ -660,3 +660,63 @@ a      { color: var(--accent-cyan); }
 
 .btn:focus-visible { outline: 2px solid var(--accent-cyan); outline-offset: 2px; }
 .input:focus-visible { border-color: var(--accent); }
+
+
+/* ── Discord link in hero section ───────────────────────── */
+.discord-link {
+  display: inline-flex;
+  align-items: center;      /* Vertically centers logo and text */
+  gap: 8px;                 /* Puts a clean space between logo and text */
+  color: #5865F2;           /* Official Discord Blurple color */
+  text-decoration: none;    /* Removes standard underline */
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+.discord-link:hover {
+  text-decoration: underline; /* Adds underline back only on hover */
+}
+
+.discord-icon {
+  width: 24px;              /* Resizes the logo to match text height */
+  height: auto;
+}
+
+/* ── Copy button for output panel ───────────────────────── */
+/* Container holding the code block and the button */
+.code-wrapper {
+  position: relative;
+  margin: 20px 0;
+}
+
+/* Style the actual code block */
+.code-wrapper pre {
+  background-color: #1e1e1e;
+  color: #d4d4d4;
+  padding: 15px;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin: 0;
+}
+
+/* Style the copy button */
+.copy-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #eaeaea;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  font-family: sans-serif;
+  transition: all 0.2s ease;
+}
+
+/* Hover effect for the button */
+.copy-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
