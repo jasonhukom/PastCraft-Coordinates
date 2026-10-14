@@ -63,14 +63,24 @@
   <main class="page" id="page-home">
     <section class="hero">
       <h1 class="hero-title">PastCraft Coordinates</h1>
-      <p class="hero-subtitle">Live coordinate index — generated from the database.</p>
+      <p class="hero-subtitle">
+        <a href="https://discord.com/channels/1423856051068997644/1513728546412171415" class="discord-link" target="_blank" rel="noopener noreferrer">
+          <!-- Discord Icon (using an SVG or an image URL) -->
+          <img src="https://program.jasonhukom.my.id/uploads/images/gallery/2026-10/NHPimage.png" alt="Discord Logo" class="discord-icon">
+          PastCraft Discord
+        </a>
+        - Go to #🧭official-coordinates and paste new format there!
+      </p>
     </section>
     <div class="output-panel">
       <div class="output-header">
-        <span class="output-filename">COORDINATES.md</span>
+        <span class="output-filename">Coordinates</span>
         <span class="output-meta" id="home-status">Loading…</span>
       </div>
-      <pre class="output-block" id="home-output"><code></code></pre>
+      <div class="code-wrapper">
+        <button class="copy-button" onClick="copyToClipboard('home-output')">Copy</button>
+        <pre class="output-block" id="home-output"><code></code></pre>
+      </div>
     </div>
   </main>
 
