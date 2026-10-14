@@ -560,20 +560,39 @@ $("#import-btn").addEventListener("click", handleImport);
 // ── Copy code button ─────────────────────────────────────────────────────────
 
 function copyCode(button) {
-  // Find the <code> element inside the same wrapper
   const codeBlock = button.parentElement.querySelector('code');
   const codeText = codeBlock.innerText;
 
-  // Copy the text to the clipboard
   navigator.clipboard.writeText(codeText).then(() => {
-    // Visual feedback: change button text
     button.innerText = "Copied!";
+    button.classList.add("copied");
     
-    // Reset button text after 2 seconds
     setTimeout(() => {
       button.innerText = "Copy";
+      button.classList.remove("copied");
     }, 2000);
   }).catch(err => {
     console.error("Failed to copy code: ", err);
   });
+}
+
+// ── Open Discord server and channel ──────────────────────────────────────────
+
+function openDiscordChannel(e) {
+  if (e) e.preventDefault();
+  const serverId  = "1423856051068997644";
+  const channelId = "1513728546412171415";
+  const appUri = `discord://-/channels/${serverId}/${channelId}`;
+  const webUrl = `https://discord.com/channels/${serverId}/${channelId}`;
+
+  // Try opening the native Discord client via custom URI scheme
+  window.location.href = appUri;
+
+  // Fallback to web browser tab if Discord client doesn't capture focus
+  const start = Date.now();
+  setTimeout(() => {
+    if (document.hasFocus() && (Date.now() - start < 2500)) {
+      window.open(webUrl, "_blank", "noopener,noreferrer");
+    }
+  }, 1000);
 }
