@@ -3,7 +3,7 @@ services:
     build: .
     container_name: pastcraft_web
     ports:
-      - "2402:2402"
+      - "5000:5000"
     volumes:
       # Mount local database folder to persist changes between container restarts
       - ./database:/app/database
