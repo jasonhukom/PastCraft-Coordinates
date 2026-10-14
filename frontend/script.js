@@ -556,3 +556,24 @@ $("#import-btn").addEventListener("click", handleImport);
   await checkAuthStatus();
   loadHomepage();
 })();
+
+// ── Copy code button ─────────────────────────────────────────────────────────
+
+function copyCode(button) {
+  // Find the <code> element inside the same wrapper
+  const codeBlock = button.parentElement.querySelector('code');
+  const codeText = codeBlock.innerText;
+
+  // Copy the text to the clipboard
+  navigator.clipboard.writeText(codeText).then(() => {
+    // Visual feedback: change button text
+    button.innerText = "Copied!";
+    
+    // Reset button text after 2 seconds
+    setTimeout(() => {
+      button.innerText = "Copy";
+    }, 2000);
+  }).catch(err => {
+    console.error("Failed to copy code: ", err);
+  });
+}
