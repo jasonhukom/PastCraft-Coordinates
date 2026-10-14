@@ -637,3 +637,59 @@ function openDiscordChannel(e) {
     }
   }, 1000);
 }
+
+// ── Feedback Widget (Console) ────────────────────────────────────────────────
+
+function toggleFeedbackPopup(show) {
+  const popup = $("#feedback-popup");
+  if (!popup) return;
+  const shouldShow = typeof show === "boolean" ? show : popup.classList.contains("hidden");
+  popup.classList.toggle("hidden", !shouldShow);
+
+  if (shouldShow) {
+    const status = $("#feedback-status");
+    if (status) status.classList.add("hidden");
+    const textarea = $("#feedback-textarea");
+    if (textarea) setTimeout(() => textarea.focus(), 50);
+  }
+}
+
+function handleSendFeedback() {
+  const textarea = $("#feedback-textarea");
+  const status   = $("#feedback-status");
+  const text     = textarea ? textarea.value.trim() : "";
+
+  if (!text) {
+    if (status) {
+      status.textContent = "Please write some feedback before sending.";
+      status.className = "feedback-status error";
+      status.classList.remove("hidden");
+    }
+    if (textarea) textarea.focus();
+    return;
+  }
+
+  const recipient = "me@jasonhukom.my.id";
+  const subject   = encodeURIComponent("PastCraft Coordinates Console — Feedback");
+  const body      = encodeURIComponent(text);
+  const mailtoUrl = `mailto:${recipient}?subject=${subject}&body=${body}`;
+
+  // Trigger default email client
+  window.location.href = mailtoUrl;
+
+  if (status) {
+    status.textContent = "Opening your email client to send to me@jasonhukom.my.id… Thank you!";
+    status.className = "feedback-status success";
+    status.classList.remove("hidden");
+  }
+
+  setTimeout(() => {
+    if (textarea) textarea.value = "";
+    toggleFeedbackPopup(false);
+  }, 2200);
+}
+
+$("#feedback-trigger-btn")?.addEventListener("click", () => toggleFeedbackPopup());
+$("#feedback-close-btn")?.addEventListener("click", () => toggleFeedbackPopup(false));
+$("#feedback-cancel-btn")?.addEventListener("click", () => toggleFeedbackPopup(false));
+$("#feedback-send-btn")?.addEventListener("click", handleSendFeedback);

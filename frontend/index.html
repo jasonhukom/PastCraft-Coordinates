@@ -140,6 +140,43 @@
     <div class="enter-bar">
       <button class="btn btn-enter-lg" id="enter-btn">ENTER — Save to Database</button>
     </div>
+
+    <!-- FEEDBACK WIDGET (Bottom Right) -->
+    <div class="feedback-widget" id="feedback-widget">
+      <div class="feedback-popup hidden" id="feedback-popup">
+        <div class="feedback-header">
+          <div class="feedback-title">
+            <svg class="feedback-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+            <span>Feedback</span>
+          </div>
+          <button type="button" class="feedback-close-btn" id="feedback-close-btn" aria-label="Close feedback">&times;</button>
+        </div>
+        <div class="feedback-body">
+          <p class="feedback-desc">Send suggestions or issues directly to <code>me@jasonhukom.my.id</code></p>
+          <textarea class="input feedback-textarea" id="feedback-textarea" rows="4" placeholder="Describe your feedback or suggestion..."></textarea>
+          <div class="feedback-status hidden" id="feedback-status"></div>
+          <div class="feedback-footer">
+            <button type="button" class="btn btn-ghost feedback-cancel-btn" id="feedback-cancel-btn">Cancel</button>
+            <button type="button" class="btn btn-enter feedback-send-btn" id="feedback-send-btn">
+              <span>Send</span>
+              <svg class="send-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="feedback-trigger-btn" id="feedback-trigger-btn" title="Send Feedback">
+        <svg class="feedback-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+        <span>Feedback</span>
+      </button>
+    </div>
   </main>
 
   <!-- Templates -->
